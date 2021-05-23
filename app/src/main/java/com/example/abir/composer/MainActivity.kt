@@ -1,22 +1,22 @@
 package com.example.abir.composer
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Composable
-import androidx.compose.state
-import androidx.ui.core.Modifier
-import androidx.ui.core.setContent
-import androidx.ui.foundation.Text
-import androidx.ui.graphics.Color
-import androidx.ui.layout.Column
-import androidx.ui.layout.padding
-import androidx.ui.material.*
-import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.dp
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 
 val green = Color(0xFF1EB980)
 
-private val themeColors = lightColorPalette(
+private val themeColors = lightColors(
     primary = green,
     surface = Color.DarkGray,
     onSurface = green
@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp { MyScreen2() }
-            //RingOfCircles()
+            //MyApp { MyScreen2() }
+            RingOfCircles()
         }
     }
 }
@@ -76,10 +76,10 @@ fun MyScreen2(names: List<String> = listOf("1", "2", "3")) {
 
 @Composable
 fun Counter() {
-    val counterState = state { 0 }
+    val counterState = remember { mutableStateOf(0) }
     Button(
         onClick = { counterState.value++ },
-        backgroundColor = if (counterState.value % 2 == 0) green else Color.Red
+        //background = if (counterState.value % 2 == 0) green else Color.Red
     ) {
         Text(
             text = "This buttons is clicked ${counterState.value} times",

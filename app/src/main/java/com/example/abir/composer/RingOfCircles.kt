@@ -1,15 +1,15 @@
 package com.example.abir.composer
 
-import androidx.compose.*
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.withTransform
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.whenStarted
-import androidx.ui.core.LifecycleOwnerAmbient
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Canvas
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.drawscope.DrawScope
-import androidx.ui.graphics.drawscope.Stroke
-import androidx.ui.graphics.drawscope.withTransform
-import androidx.ui.layout.fillMaxSize
 import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
@@ -21,6 +21,7 @@ private const val WAVE_PERIOD = DOT_PERIOD / (8 * Math.PI)
 /**
  * Creates a composable ring-of-circles animation.
  *
+ * https://github.com/alexjlockwood/bees-and-bombs-compose
  * https://twitter.com/alexjlockwood/status/1269417448651886592
  */
 @Composable
@@ -81,14 +82,14 @@ private fun DrawScope.drawDot(
  * at `0L` and stops updating when the call leaves the composition.
  */
 @Composable
-private fun animationTimeMillis(): State<Long> {
-    val millisState = state { 0L }
-    val lifecycleOwner = LifecycleOwnerAmbient.current
-    launchInComposition {
-        val startTime = awaitFrameMillis { it }
+fun animationTimeMillis(): State<Long> {
+    val millisState = remember { mutableStateOf(0L) }
+    val lifecycleOwner = LocalLifecycleOwner.current
+    LaunchedEffect(true) {
+        val startTime = withFrameMillis { it }
         lifecycleOwner.whenStarted {
             while (true) {
-                awaitFrameMillis { frameTime ->
+                withFrameMillis { frameTime ->
                     millisState.value = frameTime - startTime
                 }
             }
