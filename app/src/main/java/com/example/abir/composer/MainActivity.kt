@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //MyApp { MyScreen2() }
-            RingOfCircles()
+            MyApp { MyScreen2() }
+            //RingOfCircles()
         }
     }
 }
