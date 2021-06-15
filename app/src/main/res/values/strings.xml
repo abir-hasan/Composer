@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Composer</string>
     <string name="title_activity_layouts_in_compose">LayoutsInComposeActivity</string>
+    <string name="title_activity_material_components_intro">MaterialComponentsIntroActivity</string>
 </resources>

@@ -10,6 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Composer">
         <activity
+            android:name=".code_lab_layouts_in_jetpack_compose.MaterialComponentsIntroActivity"
+            android:exported="true"
+            android:label="@string/title_activity_material_components_intro"
+            android:theme="@style/Theme.Composer.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".code_lab_layouts_in_jetpack_compose.LayoutsInComposeActivity"
             android:exported="true"
             android:label="@string/title_activity_layouts_in_compose"
@@ -17,7 +28,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
