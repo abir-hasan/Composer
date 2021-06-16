@@ -3,4 +3,5 @@
     <string name="title_activity_layouts_in_compose">LayoutsInComposeActivity</string>
     <string name="title_activity_material_components_intro">MaterialComponentsIntroActivity</string>
     <string name="title_activity_list_preview">ListPreviewActivity</string>
+    <string name="title_activity_complex_layout">ComplexLayoutActivity</string>
 </resources>
