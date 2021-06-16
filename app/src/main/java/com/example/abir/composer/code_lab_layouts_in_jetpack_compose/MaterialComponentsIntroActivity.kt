@@ -1,5 +1,6 @@
 package com.example.abir.composer.code_lab_layouts_in_jetpack_compose
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -115,6 +116,7 @@ private fun BodyContent(modifier: Modifier = Modifier, selectedResult: String = 
 
 
 @Preview(showBackground = true)
+@Preview("dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun DefaultPreview3() {
     ComposerTheme {
